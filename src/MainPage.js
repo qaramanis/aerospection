@@ -10,7 +10,7 @@ const MainPage = () => {
         justifyContent: "flex-start",
         height: "auto",
         width: "auto",
-        backgroundColor: "#FF9800",
+        backgroundColor: "#def9c4",
         marginRight: "120vh",
         marginTop: "-50vh",
       }}

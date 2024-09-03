@@ -1,5 +1,3 @@
-// src/components/Modal.js
-
 import React from "react";
 
 const Modal = ({ show, onClose }) => {
