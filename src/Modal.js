@@ -39,7 +39,7 @@ const Modal = ({ show, onClose }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            instagram.com
+            instagram.com/aero.spection
           </a>
         </p>
         <button
