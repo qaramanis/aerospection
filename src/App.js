@@ -1,8 +1,8 @@
-import logo_black from "./assets/logo-black.png";
+import logo_black from "./logo-black.png";
 import "./App.css";
-import Overlay from "./components/barOverlay";
+import Overlay from "./barOverlay";
 import { Dimensions } from "react-native";
-import MainPage from "./components/MainPage";
+import MainPage from "./MainPage";
 
 function App() {
   const logoRatio = 5.168711656;

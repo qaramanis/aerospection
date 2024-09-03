@@ -20,7 +20,7 @@ const ContactButton = () => {
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
-          marginTop: "20px", // Space above the button
+          marginTop: "15px", // Space above the button
           transition: "background-color 0.3s ease",
         }}
         onClick={toggleModal}

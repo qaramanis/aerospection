@@ -1,6 +1,6 @@
 import React from "react";
 import ContactButton from "./ContactButton";
-import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-black.png";
+import logo from "./logo-black.png";
 
 const OverlayImage = () => {
   return (
