@@ -1,7 +1,8 @@
-import logo_black from "./logo-black.png";
+import logo_black from "./assets/logo-black.png";
 import "./App.css";
-import Overlay from "./barOverlay";
+import Overlay from "./components/barOverlay";
 import { Dimensions } from "react-native";
+import MainPage from "./components/MainPage";
 
 function App() {
   const logoRatio = 5.168711656;
@@ -9,9 +10,9 @@ function App() {
 
   return (
     <div className="App">
-      asda
       <header className="App-header">
         <Overlay />
+        <MainPage />
       </header>
     </div>
   );

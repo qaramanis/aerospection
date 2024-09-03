@@ -1,13 +1,10 @@
 import React from "react";
-import logo from "./logo-black.png";
+import ContactButton from "./ContactButton";
+import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-black.png";
 
 const OverlayImage = () => {
   return (
-    <div
-      style={{
-        backgroundColor: "F6FB7A",
-      }}
-    >
+    <div>
       <div
         style={{
           position: "fixed",
@@ -43,15 +40,7 @@ const OverlayImage = () => {
           justifyContent: "end",
         }}
       >
-        <div
-          style={{
-            color: "#16423C",
-            fontSize: "24px",
-            fontWeight: "bold",
-          }}
-        >
-          Your custom aerial shots
-        </div>
+        <ContactButton />
       </div>
     </div>
   );
