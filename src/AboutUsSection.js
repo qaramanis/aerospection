@@ -50,13 +50,13 @@ const AboutUsSection = () => {
 
   const titleStyle = {
     fontSize: isMobile ? "2rem" : "3rem",
-    color: "#303642",
+    color: "white",
     marginBottom: "1rem",
   };
 
   const subtitleStyle = {
     fontSize: isMobile ? "1rem" : "1.5rem",
-    color: "#303642",
+    color: "white",
     marginBottom: "2rem",
   };
 
@@ -67,7 +67,7 @@ const AboutUsSection = () => {
   };
 
   const featureStyle = {
-    backgroundColor: "white",
+    backgroundColor: "#0fb68a",
     padding: "1.5rem",
     borderRadius: "10px",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
@@ -75,14 +75,14 @@ const AboutUsSection = () => {
 
   const featureTitleStyle = {
     fontSize: isMobile ? "1.25rem" : "1.5rem",
-    color: "#303642",
+    color: "white",
     fontWeight: "bold",
     marginBottom: "0.5rem",
   };
 
   const featureDescriptionStyle = {
     fontSize: isMobile ? "0.9rem" : "1rem",
-    color: "#303642",
+    color: "white",
   };
 
   return (

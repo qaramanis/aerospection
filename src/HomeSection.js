@@ -5,6 +5,7 @@ const HomeSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
+  const poster = "/images/poster-dark.png";
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -48,22 +49,39 @@ const HomeSection = () => {
     maxWidth: isMobile ? "100%" : "80%",
     margin: isMobile ? "3rem 0 0 0" : "0 auto 0 10%",
     textAlign: isMobile ? "left" : "left",
+    alignSelf: "start",
   };
 
   const titleStyle = {
     fontSize: isMobile ? "2rem" : "3rem",
-    color: "#303642",
+    color: "white",
     marginBottom: "1rem",
   };
 
   const subtitleStyle = {
     fontSize: isMobile ? "1rem" : "1.5rem",
-    color: "#303642",
+    color: "white",
     marginBottom: "2rem",
   };
 
   const buttonContainerStyle = {
     marginTop: "2rem",
+  };
+
+  const imageContainerStyle = {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "2rem",
+  };
+
+  const imageStyle = {
+    maxWidth: "80%",
+    height: "auto",
+    border: "4px solid white",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    transition: "transform 0.3s ease-in-out",
   };
 
   return (
@@ -80,6 +98,13 @@ const HomeSection = () => {
         <div style={buttonContainerStyle}>
           <ContactButton />
         </div>
+      </div>
+      <div style={imageContainerStyle}>
+        <img
+          src={poster}
+          alt="Aerospection Maritime Operations"
+          style={imageStyle}
+        />
       </div>
     </section>
   );

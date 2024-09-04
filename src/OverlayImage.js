@@ -14,7 +14,6 @@ const OverlayImage = () => {
 
     checkIfMobile();
     window.addEventListener("resize", checkIfMobile);
-
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = ["home", "about", "team"];
@@ -28,7 +27,7 @@ const OverlayImage = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
+    handleScroll();
     return () => {
       window.removeEventListener("resize", checkIfMobile);
       window.removeEventListener("scroll", handleScroll);
@@ -90,10 +89,16 @@ const OverlayImage = () => {
     height: "2px",
     bottom: "-5px",
     left: 0,
-    backgroundColor: "#OFB68A",
+    backgroundColor: "white",
     visibility: "hidden",
     transform: "scaleX(0)",
     transition: "all 0.3s ease-in-out",
+  };
+
+  const activeUnderlineStyle = {
+    ...underlineStyle,
+    visibility: "visible",
+    transform: "scaleX(1)",
   };
 
   const mobileNavStyle = {
@@ -200,12 +205,11 @@ const OverlayImage = () => {
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
             <span
-              style={{
-                ...underlineStyle,
-                visibility: activeSection === section ? "visible" : "hidden",
-                transform:
-                  activeSection === section ? "scaleX(1)" : "scaleX(0)",
-              }}
+              style={
+                activeSection === section
+                  ? activeUnderlineStyle
+                  : underlineStyle
+              }
             />
           </a>
         ))}

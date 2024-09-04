@@ -43,8 +43,8 @@ const ContactButton = ({ isMobileOverlay }) => {
   const buttonStyle = {
     padding: isMobile ? "8px 16px" : "12px 24px",
     fontSize: isMobile ? "16px" : "22px",
-    color: "#303642",
-    backgroundColor: "white",
+    color: "white",
+    backgroundColor: "#0fb68a",
     border: "none",
     borderRadius: "20px",
     cursor: "pointer",
