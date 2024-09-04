@@ -184,8 +184,7 @@ const OverlayImage = () => {
             onClick={(e) => handleNavClick(e, section)}
             style={{
               ...desktopMenuItemStyle,
-              color:
-                activeSection === section ? "#your-highlight-color" : "#FFFFFF",
+              color: activeSection === section ? "white" : "#FFFFFF",
             }}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}

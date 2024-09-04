@@ -3,6 +3,18 @@ import React, { useState, useEffect } from "react";
 const ContactButton = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [copySuccess, setCopySuccess] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -28,100 +40,105 @@ const ContactButton = () => {
     }
   }, [copySuccess]);
 
+  const buttonStyle = {
+    padding: isMobile ? "8px 16px" : "12px 24px",
+    fontSize: isMobile ? "16px" : "20px",
+    color: "#fff",
+    backgroundColor: "#41B3A2",
+    border: "none",
+    borderRadius: "20px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    width: isMobile ? "auto" : "18vh",
+    height: isMobile ? "auto" : "6vh",
+  };
+
+  const popupStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  };
+
+  const popupContentStyle = {
+    backgroundColor: "#fff",
+    padding: isMobile ? "15px" : "20px",
+    borderRadius: isMobile ? "30px" : "60px",
+    boxShadow: "0 6px 10px rgba(0, 0, 0, 0.1)",
+    maxWidth: "90%",
+    width: isMobile ? "90%" : "600px",
+    maxHeight: "90%",
+    overflow: "auto",
+    position: "relative",
+    textAlign: "center",
+  };
+
+  const titleStyle = {
+    marginTop: 0,
+    color: "#41B3A2",
+    fontSize: isMobile ? "30px" : "50px",
+    marginBottom: isMobile ? "20px" : "30px",
+  };
+
+  const textStyle = {
+    marginBottom: "20px",
+    fontSize: isMobile ? "20px" : "35px",
+    lineHeight: "1.5",
+  };
+
+  const linkStyle = {
+    color: "#0077B5",
+    textDecoration: "none",
+  };
+
+  const emailStyle = {
+    color: "#41B3A2",
+    cursor: "pointer",
+    textDecoration: "underline",
+  };
+
+  const closeButtonStyle = {
+    ...buttonStyle,
+    display: "inline-block",
+    marginTop: "20px",
+  };
+
   return (
     <>
-      <button
-        style={{
-          transform: "scale(1)",
-          padding: "12px 24px",
-          fontSize: "20px",
-          color: "#fff",
-          backgroundColor: "#41B3A2",
-          border: "none",
-          borderRadius: "20px",
-          cursor: "pointer",
-          transition: "background-color 0.3s ease",
-          width: "18vh",
-          height: "6vh",
-        }}
-        onClick={togglePopup}
-      >
+      <button style={buttonStyle} onClick={togglePopup}>
         Contact Us
       </button>
       {showPopup && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-          onClick={togglePopup}
-        >
-          <div
-            style={{
-              backgroundColor: "#fff",
-              padding: "20px",
-              borderRadius: "60px",
-              boxShadow: "0 6px 10px rgba(0, 0, 0, 0.1)",
-              maxWidth: "90%",
-              width: "600px",
-              maxHeight: "90%",
-              overflow: "auto",
-              position: "relative",
-              textAlign: "center",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2
-              style={{
-                marginTop: 0,
-                color: "#41B3A2",
-                fontSize: "50px",
-                marginBottom: "30px",
-              }}
-            >
-              Contact Us
-            </h2>
-            <p
-              style={{
-                marginBottom: "20px",
-                fontSize: "35px",
-                lineHeight: "1.5",
-              }}
-            >
+        <div style={popupStyle} onClick={togglePopup}>
+          <div style={popupContentStyle} onClick={(e) => e.stopPropagation()}>
+            <h2 style={titleStyle}>Contact Us</h2>
+            <p style={textStyle}>
               Find us at{" "}
               <a
                 href="https://www.linkedin.com/company/aerospectiongr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#0077B5", textDecoration: "none" }}
+                style={linkStyle}
               >
                 LinkedIn
               </a>
             </p>
-            <p style={{ fontSize: "24px", margin: "20px 0" }}>or</p>
             <p
-              style={{
-                fontSize: "35px",
-                marginBottom: "20px",
-                lineHeight: "1.5",
-              }}
+              style={{ fontSize: isMobile ? "18px" : "24px", margin: "20px 0" }}
             >
+              or
+            </p>
+            <p style={textStyle}>
               Email us at{" "}
               <span
                 onClick={() => copyToClipboard("info@aerospection.gr")}
-                style={{
-                  color: "#41B3A2",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                }}
+                style={emailStyle}
               >
                 info@aerospection.gr
               </span>
@@ -130,28 +147,14 @@ const ContactButton = () => {
               <p
                 style={{
                   color: "green",
-                  fontSize: "20px",
+                  fontSize: isMobile ? "16px" : "20px",
                   marginBottom: "20px",
                 }}
               >
                 {copySuccess}
               </p>
             )}
-            <button
-              style={{
-                padding: "12px 24px",
-                fontSize: "20px",
-                color: "#fff",
-                backgroundColor: "#41B3A2",
-                border: "none",
-                borderRadius: "20px",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease",
-                display: "inline-block",
-                marginTop: "20px",
-              }}
-              onClick={togglePopup}
-            >
+            <button style={closeButtonStyle} onClick={togglePopup}>
               Close
             </button>
           </div>
