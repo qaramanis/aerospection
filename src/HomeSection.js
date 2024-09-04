@@ -38,7 +38,7 @@ const HomeSection = () => {
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",
-    alignItems: isMobile ? "felx-start" : "flex-start",
+    alignItems: isMobile ? "flex-start" : "flex-start",
     opacity: isVisible ? 1 : 0,
     transition: "opacity 1s ease-in-out",
   };
