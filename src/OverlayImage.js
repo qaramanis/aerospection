@@ -51,12 +51,8 @@ const OverlayImage = () => {
     } else {
       const element = document.getElementById(section);
       if (element) {
-        const offset = 100; // Adjust this value as needed
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
         window.scrollTo({
-          top: offsetPosition,
+          top: 925,
           behavior: "smooth",
         });
       }
