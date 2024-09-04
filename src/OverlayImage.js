@@ -90,7 +90,7 @@ const OverlayImage = () => {
     height: "2px",
     bottom: "-5px",
     left: 0,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#OFB68A",
     visibility: "hidden",
     transform: "scaleX(0)",
     transition: "all 0.3s ease-in-out",

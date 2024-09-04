@@ -43,8 +43,8 @@ const ContactButton = ({ isMobileOverlay }) => {
   const buttonStyle = {
     padding: isMobile ? "8px 16px" : "12px 24px",
     fontSize: isMobile ? "16px" : "22px",
-    color: "#fff",
-    backgroundColor: "#41B3A2",
+    color: "#303642",
+    backgroundColor: "white",
     border: "none",
     borderRadius: "20px",
     cursor: "pointer",
@@ -81,30 +81,32 @@ const ContactButton = ({ isMobileOverlay }) => {
 
   const titleStyle = {
     marginTop: 0,
-    color: "#41B3A2",
+    color: "#303642",
     fontSize: isMobile ? "24px" : "50px", // Adjusted font size for mobile
     marginBottom: isMobile ? "15px" : "30px",
   };
 
   const textStyle = {
+    color: "#303642",
     marginBottom: "20px",
     fontSize: isMobile ? "16px" : "35px", // Adjusted font size for mobile
     lineHeight: "1.5",
   };
 
   const linkStyle = {
-    color: "#0077B5",
+    color: "#0fb68a",
     textDecoration: "none",
   };
 
   const emailStyle = {
-    color: "#41B3A2",
+    color: "#0fb68a",
     cursor: "pointer",
     textDecoration: "underline",
   };
 
   const closeButtonStyle = {
     ...buttonStyle,
+    backgroundColor: "#0fb68a",
     display: "inline-block",
     marginTop: "20px",
     fontSize: isMobile ? "14px" : "22px", // Adjusted font size for mobile
