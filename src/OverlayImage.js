@@ -3,7 +3,7 @@ import ContactButton from "./ContactButton";
 
 const OverlayImage = () => {
   const [activeSection, setActiveSection] = useState("home");
-  const logo = "pic1.jpeg";
+  const logo = "/images/logo-white.png";
 
   useEffect(() => {
     const sectionIds = ["home", "about", "team"];
