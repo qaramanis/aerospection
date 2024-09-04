@@ -3,131 +3,120 @@ import ContactButton from "./ContactButton";
 
 const OverlayImage = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logo = "/images/logo-white.png";
 
   useEffect(() => {
-    const sectionIds = ["home", "about", "team"];
-    const sectionElements = sectionIds.map((id) => document.getElementById(id));
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const sections = ["home", "about", "team"];
 
-    const options = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.7,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      for (let section of sections) {
+        const element = document.getElementById(section);
+        if (element && scrollPosition >= element.offsetTop - 100) {
+          setActiveSection(section);
         }
-      });
-    }, options);
-
-    sectionElements.forEach((element) => {
-      if (element) observer.observe(element);
-    });
-
-    return () => {
-      sectionElements.forEach((element) => {
-        if (element) observer.unobserve(element);
-      });
+      }
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (e, section) => {
     e.preventDefault();
     setActiveSection(section);
+    setIsMenuOpen(false);
 
-    if (section === "home") {
+    const element = document.getElementById(section);
+    if (element) {
       window.scrollTo({
-        top: 0,
+        top: element.offsetTop - 60,
         behavior: "smooth",
       });
-    } else if (section === "team") {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    } else {
-      const element = document.getElementById(section);
-      if (element) {
-        window.scrollTo({
-          top: 925,
-          behavior: "smooth",
-        });
-      }
     }
   };
 
+  const navStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "rgba(48, 54, 66, 0.9)",
+    padding: "10px 20px",
+    zIndex: 1000,
+  };
+
+  const navContentStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  };
+
+  const logoStyle = {
+    height: "40px",
+    cursor: "pointer",
+  };
+
+  const menuButtonStyle = {
+    background: "none",
+    border: "none",
+    color: "white",
+    fontSize: "24px",
+    cursor: "pointer",
+  };
+
+  const menuStyle = {
+    display: isMenuOpen ? "flex" : "none",
+    flexDirection: "column",
+    position: "absolute",
+    top: "60px",
+    left: 0,
+    right: 0,
+    backgroundColor: "rgba(48, 54, 66, 0.9)",
+    padding: "10px",
+  };
+
+  const menuItemStyle = {
+    color: "white",
+    textDecoration: "none",
+    padding: "10px",
+    fontSize: "18px",
+  };
+
   return (
-    <div>
-      <div
-        style={{
-          position: "fixed",
-          top: "0",
-          left: "0",
-          right: "0",
-          zIndex: 1000,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "1rem 5%",
-          backgroundColor: "rgba(48, 54, 66, 0.4)",
-        }}
-      >
+    <nav style={navStyle}>
+      <div style={navContentStyle}>
         <img
           src={logo}
           alt="Logo"
           onClick={(e) => handleNavClick(e, "home")}
-          style={{
-            maxWidth: "20%",
-            maxHeight: "20%",
-            width: "auto",
-            height: "auto",
-            cursor: "pointer",
-          }}
+          style={logoStyle}
         />
-        <div style={{ display: "flex", gap: "5rem", fontSize: "30px" }}>
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          style={menuButtonStyle}
+        >
+          ☰
+        </button>
+      </div>
+      <div style={menuStyle}>
+        {["home", "about", "team"].map((section) => (
           <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, "home")}
-            className={`nav-link ${activeSection === "home" ? "active" : ""}`}
+            key={section}
+            href={`#${section}`}
+            onClick={(e) => handleNavClick(e, section)}
             style={{
-              color: "#FFFFFF",
-              textDecoration: "none",
-              fontWeight: "bold",
+              ...menuItemStyle,
+              fontWeight: activeSection === section ? "bold" : "normal",
             }}
           >
-            Home
+            {section.charAt(0).toUpperCase() + section.slice(1)}
           </a>
-          <a
-            href="#about"
-            onClick={(e) => handleNavClick(e, "about")}
-            className={`nav-link ${activeSection === "about" ? "active" : ""}`}
-            style={{
-              color: "#FFFFFF",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            About Us
-          </a>
-          <a
-            href="#team"
-            onClick={(e) => handleNavClick(e, "team")}
-            className={`nav-link ${activeSection === "team" ? "active" : ""}`}
-            style={{
-              color: "#FFFFFF",
-              textDecoration: "none",
-              fontWeight: "bold",
-            }}
-          >
-            Our team
-          </a>
-        </div>
+        ))}
         <ContactButton />
       </div>
-    </div>
+    </nav>
   );
 };
 
