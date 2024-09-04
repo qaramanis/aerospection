@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import ContactButton from "./ContactButton";
-import useFadeSection from "./useFadeSection";
 
 const HomeSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +28,7 @@ const HomeSection = () => {
     <section
       id="home"
       ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} flex flex-col min-h-screen bg-pink-100 p-4`}
+      className={`fade-section ${isVisible ? "is-visible" : ""} flex flex-col min-h-screen  p-4`}
       style={{ alignContent: "start", marginRight: "50%" }}
     >
       <div

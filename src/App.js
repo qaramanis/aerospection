@@ -1,10 +1,9 @@
 import "./App.css";
 import "./FadeTransition.css";
 import Overlay from "./OverlayImage";
-import MainPage from "./MainPage";
-import ScrollableDestinationSection from "./ScrollableDestinationSection";
 import HomeSection from "./HomeSection";
 import AboutUsSection from "./AboutUsSection";
+import TeamSection from "./TeamSection";
 
 function App() {
   return (
@@ -12,7 +11,7 @@ function App() {
       <Overlay />
       <HomeSection />
       <AboutUsSection />
-      <ScrollableDestinationSection />
+      <TeamSection />
     </div>
   );
 }

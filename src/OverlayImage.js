@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ContactButton from "./ContactButton";
 import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-white.png";
 
 const OverlayImage = () => {
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const sectionIds = ["home", "about", "team"];
+    const sectionElements = sectionIds.map((id) => document.getElementById(id));
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.7, // Adjust this value to change when the section is considered "active"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    sectionElements.forEach((element) => {
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      sectionElements.forEach((element) => {
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
+
   const handleNavClick = (e, section) => {
-    e.preventDefault(); // Prevent default link behavior
+    e.preventDefault();
+    setActiveSection(section);
 
     if (section === "home") {
       window.scrollTo({
@@ -49,6 +81,7 @@ const OverlayImage = () => {
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
+            className={`nav-link ${activeSection === "home" ? "active" : ""}`}
             style={{
               color: "#FFFFFF",
               textDecoration: "none",
@@ -60,6 +93,7 @@ const OverlayImage = () => {
           <a
             href="#about"
             onClick={(e) => handleNavClick(e, "about")}
+            className={`nav-link ${activeSection === "about" ? "active" : ""}`}
             style={{
               color: "#FFFFFF",
               textDecoration: "none",
@@ -71,6 +105,7 @@ const OverlayImage = () => {
           <a
             href="#team"
             onClick={(e) => handleNavClick(e, "team")}
+            className={`nav-link ${activeSection === "team" ? "active" : ""}`}
             style={{
               color: "#FFFFFF",
               textDecoration: "none",
