@@ -37,6 +37,7 @@ const HomeSection = () => {
     minHeight: "100vh",
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
+    justifyContent: "flex-start",
     flexDirection: "column",
     alignItems: isMobile ? "flex-start" : "flex-start",
     opacity: isVisible ? 1 : 0,

@@ -49,7 +49,7 @@ const ContactButton = ({ isMobileOverlay }) => {
     borderRadius: "20px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
-    width: isMobileOverlay ? "2vh" : isMobile ? "auto" : "18vh",
+    width: isMobileOverlay ? "auto" : isMobile ? "auto" : "18vh",
     height: isMobile ? "auto" : "6vh",
   };
 
@@ -69,10 +69,10 @@ const ContactButton = ({ isMobileOverlay }) => {
   const popupContentStyle = {
     backgroundColor: "#fff",
     padding: isMobile ? "15px" : "20px",
-    borderRadius: isMobile ? "30px" : "60px",
+    borderRadius: isMobile ? "20px" : "60px",
     boxShadow: "0 6px 10px rgba(0, 0, 0, 0.1)",
-    maxWidth: "90%",
-    width: isMobile ? "90%" : "600px",
+    maxWidth: isMobile ? "85%" : "90%",
+    width: isMobile ? "300px" : "600px", // Adjusted width for mobile
     maxHeight: "90%",
     overflow: "auto",
     position: "relative",
@@ -82,13 +82,13 @@ const ContactButton = ({ isMobileOverlay }) => {
   const titleStyle = {
     marginTop: 0,
     color: "#41B3A2",
-    fontSize: isMobile ? "30px" : "50px",
-    marginBottom: isMobile ? "20px" : "30px",
+    fontSize: isMobile ? "24px" : "50px", // Adjusted font size for mobile
+    marginBottom: isMobile ? "15px" : "30px",
   };
 
   const textStyle = {
     marginBottom: "20px",
-    fontSize: isMobile ? "20px" : "35px",
+    fontSize: isMobile ? "16px" : "35px", // Adjusted font size for mobile
     lineHeight: "1.5",
   };
 
@@ -107,6 +107,8 @@ const ContactButton = ({ isMobileOverlay }) => {
     ...buttonStyle,
     display: "inline-block",
     marginTop: "20px",
+    fontSize: isMobile ? "14px" : "22px", // Adjusted font size for mobile
+    padding: isMobile ? "6px 12px" : "12px 24px", // Adjusted padding for mobile
   };
 
   return (
@@ -130,7 +132,7 @@ const ContactButton = ({ isMobileOverlay }) => {
               </a>
             </p>
             <p
-              style={{ fontSize: isMobile ? "18px" : "24px", margin: "20px 0" }}
+              style={{ fontSize: isMobile ? "14px" : "24px", margin: "15px 0" }}
             >
               or
             </p>
@@ -147,8 +149,8 @@ const ContactButton = ({ isMobileOverlay }) => {
               <p
                 style={{
                   color: "green",
-                  fontSize: isMobile ? "16px" : "20px",
-                  marginBottom: "20px",
+                  fontSize: isMobile ? "14px" : "20px",
+                  marginBottom: "15px",
                 }}
               >
                 {copySuccess}
