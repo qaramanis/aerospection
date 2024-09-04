@@ -7,20 +7,26 @@ const HomeSection = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+        });
       },
-      { threshold: 0.1 },
+      {
+        threshold: 0.1,
+        rootMargin: "0px",
+      },
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -35,7 +41,7 @@ const HomeSection = () => {
       backgroundColor: "#def9c4",
       marginTop: "-1px",
       opacity: isVisible ? 1 : 0,
-      transition: "opacity 0.5s ease-in-out",
+      transition: "opacity 1s ease-in-out",
     },
     {
       minHeight: "100vh",
@@ -46,7 +52,7 @@ const HomeSection = () => {
       backgroundColor: "#def9c4",
       marginTop: "-1px",
       opacity: isVisible ? 1 : 0,
-      transition: "opacity 0.5s ease-in-out",
+      transition: "opacity 1s ease-in-out",
     },
   );
 
