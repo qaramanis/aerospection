@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ContactButton from "./ContactButton";
+import useResponsiveStyles from "./useResponsiveStyles";
 
 const HomeSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,39 +25,85 @@ const HomeSection = () => {
     };
   }, []);
 
+  const sectionStyle = useResponsiveStyles(
+    {
+      minHeight: "100vh",
+      padding: "1rem",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      backgroundColor: "#def9c4",
+      marginTop: "-1px",
+      opacity: isVisible ? 1 : 0,
+      transition: "opacity 0.5s ease-in-out",
+    },
+    {
+      minHeight: "100vh",
+      padding: "1rem",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      backgroundColor: "#def9c4",
+      marginTop: "-1px",
+      opacity: isVisible ? 1 : 0,
+      transition: "opacity 0.5s ease-in-out",
+    },
+  );
+
+  const contentStyle = useResponsiveStyles(
+    {
+      maxWidth: "100%",
+      marginLeft: "5%",
+      marginRight: "5%",
+      textAlign: "left",
+    },
+    {
+      maxWidth: "32rem",
+      marginLeft: "10%",
+      textAlign: "left",
+    },
+  );
+
+  const h1Style = useResponsiveStyles(
+    {
+      fontSize: "2rem",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+      color: "#303642",
+    },
+    {
+      fontSize: "3rem",
+      fontWeight: "bold",
+      marginBottom: "1rem",
+      color: "#303642",
+    },
+  );
+
+  const h3Style = useResponsiveStyles(
+    {
+      fontSize: "1rem",
+      marginBottom: "1rem",
+      color: "#303642",
+    },
+    {
+      fontSize: "1.5rem",
+      marginBottom: "1rem",
+      color: "#303642",
+    },
+  );
+
   return (
-    <section
-      id="home"
-      ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} min-h-screen p-4 flex flex-col justify-center`}
-      style={{
-        alignContent: "start",
-        marginRight: "50%",
-        display: "flex",
-        flexDirection: "row",
-      }}
-    >
-      <div
-        className="max-w-2xl"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "start",
-          padding: "10%",
-          marginTop: "15%",
-        }}
-      >
-        <h1 style={{ fontSize: "65px", color: "#303642" }}>
-          The Aerospection Edge
-        </h1>
-        <h3 style={{ fontSize: "30px", color: "#303642" }}>
+    <section id="home" ref={sectionRef} style={sectionStyle}>
+      <div style={contentStyle}>
+        <h1 style={h1Style}>The Aerospection Edge</h1>
+        <h3 style={h3Style}>
           Let Aerospection take your maritime operations to new heights.
         </h3>
-        <h3 style={{ fontSize: "30px", color: "#303642" }}>
+        <h3 style={h3Style}>
           Your fleet, our technology - together, we sail towards a smarter,
           safer and more sustainable future.
         </h3>
-        <div className="space-y-4 mt-8">
+        <div style={{ marginTop: "2rem" }}>
           <ContactButton />
         </div>
       </div>
