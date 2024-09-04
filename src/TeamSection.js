@@ -57,7 +57,7 @@ const TeamSection = () => {
 
   const sectionStyle = {
     minHeight: "100vh",
-    backgroundColor: "##def9c4", // Light blue background
+    backgroundColor: "#def9c4", // Light blue background
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",

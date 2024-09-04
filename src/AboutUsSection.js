@@ -37,7 +37,7 @@ const AboutUsSection = () => {
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",
-    alignItems: isMobile ? "center" : "flex-end",
+    alignItems: isMobile ? "center" : "center",
     opacity: isVisible ? 1 : 0,
     transition: "opacity 1s ease-in-out",
   };
@@ -45,7 +45,7 @@ const AboutUsSection = () => {
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
     margin: isMobile ? "0" : "0 10% 0 auto",
-    textAlign: isMobile ? "center" : "right",
+    textAlign: isMobile ? "center" : "center",
   };
 
   const titleStyle = {
