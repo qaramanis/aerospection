@@ -49,7 +49,7 @@ const ContactButton = ({ isMobileOverlay }) => {
     borderRadius: "20px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
-    width: isMobileOverlay ? "auto" : isMobile ? "auto" : "18vh",
+    width: isMobileOverlay ? "2vh" : isMobile ? "auto" : "18vh",
     height: isMobile ? "auto" : "6vh",
   };
 
