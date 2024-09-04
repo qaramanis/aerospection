@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ContactButton from "./ContactButton";
-import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-white.png";
 
 const OverlayImage = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const logo = "pic1.jpeg";
 
   useEffect(() => {
     const sectionIds = ["home", "about", "team"];
