@@ -28,7 +28,7 @@ const HomeSection = () => {
     <section
       id="home"
       ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} min-h-screen  p-4`}
+      className={`fade-section ${isVisible ? "is-visible" : ""} min-h-screen p-4 flex flex-col justify-center`}
       style={{
         alignContent: "start",
         marginRight: "50%",
