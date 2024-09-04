@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Modal = ({ show, onClose }) => {
+  const [copied, setCopied] = useState(false);
+  const email = "info@aerospection.gr";
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   if (!show) {
     return null;
   }
@@ -23,34 +33,57 @@ const Modal = ({ show, onClose }) => {
       <div
         style={{
           backgroundColor: "#def9c4",
-          color: "#333",
+          color: "#303642",
           padding: "5px",
-          borderRadius: "8px",
-          maxWidth: "400px",
+          borderRadius: "20px",
+          maxWidth: "700px",
           width: "100%",
           textAlign: "center",
         }}
       >
-        <h2>Contact Us</h2>
-        <p>
-          Visit our Instagram:{" "}
+        <h3>Contact Us</h3>
+        <h4>
+          E-mail us at{" "}
+          <span
+            onClick={copyToClipboard}
+            style={{
+              color: "#0066cc",
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
+            title="Click to copy email"
+          >
+            {email}
+          </span>{" "}
+          {copied && (
+            <span style={{ color: "green", fontSize: "0.8em" }}>(Copied!)</span>
+          )}
+        </h4>
+        <p>or</p>
+        <h4>
+          Visit our LinkedIn page{" "}
           <a
-            href="https://www.instagram.com/aero.spection/"
+            href="https://www.linkedin.com/company/aerospectiongr"
             target="_blank"
             rel="noopener noreferrer"
+            style={{ color: "#0066cc" }}
           >
-            instagram.com/aero.spection
+            here
           </a>
-        </p>
+        </h4>
+
         <button
           style={{
             marginTop: "20px",
+            marginBottom: "10px",
             padding: "10px 20px",
-            backgroundColor: "#007BFF",
+            backgroundColor: "#41B3A2",
             color: "#fff",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: "8px",
             cursor: "pointer",
+            width: "100%",
+            maxWidth: "120px",
           }}
           onClick={onClose}
         >

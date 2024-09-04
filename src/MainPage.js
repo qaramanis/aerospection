@@ -5,38 +5,62 @@ const MainPage = () => {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-        height: "auto",
-        width: "auto",
-        textAlign: "start",
+        justifyContent: "space-between",
         backgroundColor: "#def9c4",
-        marginRight: "120vh",
-        marginTop: "-30vh",
+        padding: "50px",
+        minHeight: "100vh",
       }}
     >
-      <h1
+      {/* Left Column */}
+      <div
         style={{
-          fontSize: "48px",
-          color: "#333",
-          MozMarginStart: "10vh",
+          flex: 1,
+          marginRight: "100px",
+          textAlign: "left",
         }}
       >
-        Inspect your projects from a different angle
-      </h1>
+        <h1 style={{ fontSize: "48px", color: "#303642" }}>
+          The Aerospection Edge
+        </h1>
+        <h3 style={{ fontSize: "35px", color: "#303642" }}>
+          Let Aerospection take your maritime operations to new heights. Your
+          fleet, our technology - together, we sail towards a smarter, safer and
+          more sustainable future
+        </h3>
+        <h2 style={{ fontSize: "30px", color: "#303642" }}>Who we are:</h2>
+        <p style={{ fontSize: "24px", color: "#303642", marginBottom: "20px" }}>
+          Aerospection is a cutting-edge company that seamlessly integrates
+          advanced technology with the critical need of maritime inspections and
+          services.
+        </p>
+        <p style={{ fontSize: "24px", color: "#303642", marginBottom: "20px" }}>
+          Our innovative approach leverages the latest in drone technology,
+          AI-driven analytics, and remote inspection solutions to revolutionize
+          the way maritime assets are monitored, maintained, and managed.
+        </p>
+      </div>
 
-      <p
+      {/* Right Column */}
+      <div
         style={{
-          fontSize: "24px",
-          color: "#333",
-          MozMarginStart: "10vh",
-          marginBottom: "20px", // Optional: Adds some space after the lorem ipsum text
+          flex: 1,
+          marginLeft: "100px",
+          textAlign: "right",
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+        <h2 style={{ fontSize: "30px", color: "#303642" }}>Our Mission:</h2>
+        <p style={{ fontSize: "24px", color: "#303642", marginBottom: "20px" }}>
+          At Aerospection, our mission is to transform the maritime industry
+          through innovative technology solutions. We aim to enhance safety,
+          efficiency, and sustainability in maritime operations.
+        </p>
+        <p style={{ fontSize: "24px", color: "#303642", marginBottom: "20px" }}>
+          By combining state-of-the-art drone technology with advanced AI
+          analytics, we provide unparalleled insights and services to our
+          clients, ensuring the integrity and longevity of their maritime
+          assets.
+        </p>
+      </div>
     </div>
   );
 };

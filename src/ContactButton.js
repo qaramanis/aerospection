@@ -13,15 +13,17 @@ const ContactButton = () => {
     <div>
       <button
         style={{
+          transform: "scale(1)",
           padding: "10px 20px",
-          fontSize: "18px",
+          fontSize: "1.8vh",
           color: "#fff",
           backgroundColor: "#41B3A2", // Bootstrap primary color
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
-          marginTop: "15px", // Space above the button
           transition: "background-color 0.3s ease",
+          width: "15vh",
+          height: "5vh",
         }}
         onClick={toggleModal}
       >
