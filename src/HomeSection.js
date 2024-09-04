@@ -3,7 +3,7 @@ import ContactButton from "./ContactButton";
 import useResponsiveStyles from "./useResponsiveStyles";
 
 const HomeSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const HomeSection = () => {
       backgroundColor: "#def9c4",
       marginTop: "-1px",
       opacity: isVisible ? 1 : 0,
-      transition: "opacity 1s ease-in-out",
+      transition: "opacity 0.5s ease-in-out",
     },
     {
       minHeight: "100vh",
@@ -52,7 +52,7 @@ const HomeSection = () => {
       backgroundColor: "#def9c4",
       marginTop: "-1px",
       opacity: isVisible ? 1 : 0,
-      transition: "opacity 1s ease-in-out",
+      transition: "opacity 0.5s ease-in-out",
     },
   );
 
