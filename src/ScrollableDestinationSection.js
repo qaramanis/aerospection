@@ -23,11 +23,11 @@ const ScrollableDestinationSection = () => {
     };
   }, []);
 
-  const destinations = [
-    { name: "Kalamaki" },
-    { name: "Kissos" },
-    { name: "Lagoudi" },
-    { name: "Nireas" },
+  const members = [
+    { name: "G. Matthaiou" },
+    { name: "I. Matthaiou" },
+    { name: "A. Gairos" },
+    { name: "A. Troullos" },
   ];
 
   const sectionStyle = {
@@ -69,6 +69,8 @@ const ScrollableDestinationSection = () => {
     position: "relative",
     borderRadius: "10px",
     overflow: "hidden",
+    padding: "10px",
+    elevation: "5",
   };
 
   const imageStyle = {
@@ -94,15 +96,18 @@ const ScrollableDestinationSection = () => {
   };
 
   return (
-    <section ref={sectionRef} style={sectionStyle}>
+    <section
+      ref={sectionRef}
+      style={sectionStyle}
+      className={`fade-section ${isVisible ? "is-visible" : ""}`}
+    >
       <div style={containerStyle}>
         <h2 style={titleStyle}>Meet our Team Members</h2>
         <div style={scrollContainerStyle}>
-          {destinations.map((dest, index) => (
+          {members.map((member, index) => (
             <div key={index} style={cardStyle}>
-              <img src={dest.image} alt={dest.name} style={imageStyle} />
               <div style={overlayStyle}>
-                <h3 style={textStyle}>{dest.name}</h3>
+                <h3 style={textStyle}>{member.name}</h3>
               </div>
             </div>
           ))}

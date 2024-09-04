@@ -1,15 +1,17 @@
 import "./App.css";
+import "./FadeTransition.css";
 import Overlay from "./OverlayImage";
 import MainPage from "./MainPage";
 import ScrollableDestinationSection from "./ScrollableDestinationSection";
+import HomeSection from "./HomeSection";
+import AboutUsSection from "./AboutUsSection";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Overlay />
-        <MainPage />
-      </header>
+      <Overlay />
+      <HomeSection />
+      <AboutUsSection />
       <ScrollableDestinationSection />
     </div>
   );

@@ -1,11 +1,24 @@
 import React from "react";
 import ContactButton from "./ContactButton";
-import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-black.png";
+import logo from "/home/qaramanis/projects/aerospection/src/assets/logo-white.png";
 
 const OverlayImage = () => {
-  const handleNavClick = (section) => {
-    console.log("scrolling to ${section} section");
+  const handleNavClick = (e, section) => {
+    e.preventDefault(); // Prevent default link behavior
+
+    if (section === "home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
+
   return (
     <div>
       <div
@@ -17,9 +30,9 @@ const OverlayImage = () => {
           zIndex: 1000,
           display: "flex",
           alignItems: "center",
-          justifyContent: "start",
+          justifyContent: "space-between",
           padding: "1rem 5%",
-          backgroundColor: "rgba(255, 255, 255, 1)",
+          backgroundColor: "rgba(48, 54, 66, 0.4)",
         }}
       >
         <img
@@ -32,12 +45,12 @@ const OverlayImage = () => {
             height: "auto",
           }}
         />
-        <div style={{ display: "flex", gap: "2rem" }}>
+        <div style={{ display: "flex", gap: "2rem", fontSize: "30px" }}>
           <a
             href="#home"
-            onClick={() => handleNavClick("home")}
+            onClick={(e) => handleNavClick(e, "home")}
             style={{
-              color: "#303642",
+              color: "#FFFFFF",
               textDecoration: "none",
               fontWeight: "bold",
             }}
@@ -46,21 +59,20 @@ const OverlayImage = () => {
           </a>
           <a
             href="#about"
-            onClick={() => handleNavClick("about")}
+            onClick={(e) => handleNavClick(e, "about")}
             style={{
-              color: "#303642",
+              color: "#FFFFFF",
               textDecoration: "none",
               fontWeight: "bold",
             }}
           >
             About Us
           </a>
-
           <a
-            href="#about"
-            onClick={() => handleNavClick("about")}
+            href="#team"
+            onClick={(e) => handleNavClick(e, "team")}
             style={{
-              color: "#303642",
+              color: "#FFFFFF",
               textDecoration: "none",
               fontWeight: "bold",
             }}

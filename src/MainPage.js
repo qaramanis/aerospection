@@ -8,7 +8,7 @@ const MainPage = () => {
         justifyContent: "space-between",
         backgroundColor: "#def9c4",
         padding: "50px",
-        minHeight: "100vh",
+        minHeight: "0",
       }}
     >
       {/* Left Column */}
