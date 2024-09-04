@@ -46,7 +46,7 @@ const HomeSection = () => {
 
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
-    margin: isMobile ? "0" : "0 auto 0 10%",
+    margin: isMobile ? "3rem 0 0 0" : "0 auto 0 10%",
     textAlign: isMobile ? "left" : "left",
   };
 
