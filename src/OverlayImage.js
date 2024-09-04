@@ -4,9 +4,17 @@ import ContactButton from "./ContactButton";
 const OverlayImage = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const logo = "/images/logo-white.png";
 
   useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = ["home", "about", "team"];
@@ -20,7 +28,11 @@ const OverlayImage = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const handleNavClick = (e, section) => {
@@ -37,7 +49,42 @@ const OverlayImage = () => {
     }
   };
 
-  const navStyle = {
+  // Styles for desktop version
+  const desktopNavStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "1rem 5%",
+    backgroundColor: "rgba(48, 54, 66, 0.4)",
+  };
+
+  const desktopLogoStyle = {
+    maxWidth: "20%",
+    maxHeight: "20%",
+    width: "auto",
+    height: "auto",
+    cursor: "pointer",
+  };
+
+  const desktopMenuStyle = {
+    display: "flex",
+    gap: "5rem",
+    fontSize: "30px",
+  };
+
+  const desktopMenuItemStyle = {
+    color: "#FFFFFF",
+    textDecoration: "none",
+    fontWeight: "bold",
+  };
+
+  // Styles for mobile version
+  const mobileNavStyle = {
     position: "fixed",
     top: 0,
     left: 0,
@@ -47,18 +94,18 @@ const OverlayImage = () => {
     zIndex: 1000,
   };
 
-  const navContentStyle = {
+  const mobileNavContentStyle = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
   };
 
-  const logoStyle = {
+  const mobileLogoStyle = {
     height: "40px",
     cursor: "pointer",
   };
 
-  const menuButtonStyle = {
+  const mobileMenuButtonStyle = {
     background: "none",
     border: "none",
     color: "white",
@@ -66,7 +113,7 @@ const OverlayImage = () => {
     cursor: "pointer",
   };
 
-  const menuStyle = {
+  const mobileMenuStyle = {
     display: isMenuOpen ? "flex" : "none",
     flexDirection: "column",
     position: "absolute",
@@ -77,45 +124,75 @@ const OverlayImage = () => {
     padding: "10px",
   };
 
-  const menuItemStyle = {
+  const mobileMenuItemStyle = {
     color: "white",
     textDecoration: "none",
     padding: "10px",
     fontSize: "18px",
   };
 
+  if (isMobile) {
+    return (
+      <nav style={mobileNavStyle}>
+        <div style={mobileNavContentStyle}>
+          <img
+            src={logo}
+            alt="Logo"
+            onClick={(e) => handleNavClick(e, "home")}
+            style={mobileLogoStyle}
+          />
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={mobileMenuButtonStyle}
+          >
+            ☰
+          </button>
+        </div>
+        <div style={mobileMenuStyle}>
+          {["home", "about", "team"].map((section) => (
+            <a
+              key={section}
+              href={`#${section}`}
+              onClick={(e) => handleNavClick(e, section)}
+              style={{
+                ...mobileMenuItemStyle,
+                fontWeight: activeSection === section ? "bold" : "normal",
+              }}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </a>
+          ))}
+          <ContactButton />
+        </div>
+      </nav>
+    );
+  }
+
   return (
-    <nav style={navStyle}>
-      <div style={navContentStyle}>
-        <img
-          src={logo}
-          alt="Logo"
-          onClick={(e) => handleNavClick(e, "home")}
-          style={logoStyle}
-        />
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          style={menuButtonStyle}
-        >
-          ☰
-        </button>
-      </div>
-      <div style={menuStyle}>
+    <nav style={desktopNavStyle}>
+      <img
+        src={logo}
+        alt="Logo"
+        onClick={(e) => handleNavClick(e, "home")}
+        style={desktopLogoStyle}
+      />
+      <div style={desktopMenuStyle}>
         {["home", "about", "team"].map((section) => (
           <a
             key={section}
             href={`#${section}`}
             onClick={(e) => handleNavClick(e, section)}
             style={{
-              ...menuItemStyle,
-              fontWeight: activeSection === section ? "bold" : "normal",
+              ...desktopMenuItemStyle,
+              color:
+                activeSection === section ? "#your-highlight-color" : "#FFFFFF",
             }}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
           </a>
         ))}
-        <ContactButton />
       </div>
+      <ContactButton />
     </nav>
   );
 };
