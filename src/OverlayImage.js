@@ -49,7 +49,6 @@ const OverlayImage = () => {
     }
   };
 
-  // Styles for desktop version
   const desktopNavStyle = {
     position: "fixed",
     top: 0,
@@ -81,9 +80,22 @@ const OverlayImage = () => {
     color: "#FFFFFF",
     textDecoration: "none",
     fontWeight: "bold",
+    position: "relative",
   };
 
-  // Styles for mobile version
+  const underlineStyle = {
+    content: '""',
+    position: "absolute",
+    width: "100%",
+    height: "2px",
+    bottom: "-5px",
+    left: 0,
+    backgroundColor: "#FFFFFF",
+    visibility: "hidden",
+    transform: "scaleX(0)",
+    transition: "all 0.3s ease-in-out",
+  };
+
   const mobileNavStyle = {
     position: "fixed",
     top: 0,
@@ -187,6 +199,14 @@ const OverlayImage = () => {
             }}
           >
             {section.charAt(0).toUpperCase() + section.slice(1)}
+            <span
+              style={{
+                ...underlineStyle,
+                visibility: activeSection === section ? "visible" : "hidden",
+                transform:
+                  activeSection === section ? "scaleX(1)" : "scaleX(0)",
+              }}
+            />
           </a>
         ))}
       </div>

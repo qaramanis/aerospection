@@ -38,14 +38,13 @@ const HomeSection = () => {
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",
-    alignItems: isMobile ? "center" : "flex-start",
+    alignItems: isMobile ? "felx-start" : "flex-start",
     opacity: isVisible ? 1 : 0,
     transition: "opacity 1s ease-in-out",
   };
 
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
-    marginTop: isMobile ? "0%" : "10%",
     margin: isMobile ? "0" : "0 auto 0 10%",
     textAlign: isMobile ? "center" : "left",
   };
