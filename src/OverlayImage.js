@@ -162,7 +162,7 @@ const OverlayImage = () => {
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </a>
           ))}
-          <ContactButton />
+          <ContactButton isMobileOverlay={true} />
         </div>
       </nav>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ContactButton = () => {
+const ContactButton = ({ isMobileOverlay }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [copySuccess, setCopySuccess] = useState("");
   const [isMobile, setIsMobile] = useState(false);
@@ -42,14 +42,14 @@ const ContactButton = () => {
 
   const buttonStyle = {
     padding: isMobile ? "8px 16px" : "12px 24px",
-    fontSize: isMobile ? "16px" : "20px",
+    fontSize: isMobile ? "16px" : "22px",
     color: "#fff",
     backgroundColor: "#41B3A2",
     border: "none",
     borderRadius: "20px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
-    width: isMobile ? "auto" : "18vh",
+    width: isMobileOverlay ? "auto" : isMobile ? "auto" : "18vh",
     height: isMobile ? "auto" : "6vh",
   };
 
