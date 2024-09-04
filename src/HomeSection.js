@@ -35,35 +35,31 @@ const HomeSection = () => {
 
   const sectionStyle = {
     minHeight: "100vh",
-    padding: "1rem",
+    padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
     opacity: isVisible ? 1 : 0,
     transition: "opacity 1s ease-in-out",
-    marginRight: isMobile ? "0" : "50%",
   };
 
   const contentStyle = {
-    maxWidth: isMobile ? "100%" : "32rem",
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "left",
-    padding: isMobile ? "5%" : "10%",
-    marginTop: isMobile ? "10%" : "15%",
+    maxWidth: isMobile ? "100%" : "80%",
+    marginTop: isMobile ? "0%" : "10%",
+    margin: isMobile ? "0" : "0 auto 0 10%",
+    textAlign: isMobile ? "center" : "left",
   };
 
-  const h1Style = {
-    fontSize: isMobile ? "40px" : "65px",
+  const titleStyle = {
+    fontSize: isMobile ? "2rem" : "3rem",
     color: "#303642",
     marginBottom: "1rem",
   };
 
-  const h3Style = {
-    fontSize: isMobile ? "20px" : "30px",
+  const subtitleStyle = {
+    fontSize: isMobile ? "1rem" : "1.5rem",
     color: "#303642",
-    marginBottom: "1rem",
+    marginBottom: "2rem",
   };
 
   const buttonContainerStyle = {
@@ -73,11 +69,11 @@ const HomeSection = () => {
   return (
     <section id="home" ref={sectionRef} style={sectionStyle}>
       <div style={contentStyle}>
-        <h1 style={h1Style}>The Aerospection Edge</h1>
-        <h3 style={h3Style}>
+        <h1 style={titleStyle}>The Aerospection Edge</h1>
+        <h3 style={subtitleStyle}>
           Let Aerospection take your maritime operations to new heights.
         </h3>
-        <h3 style={h3Style}>
+        <h3 style={subtitleStyle}>
           Your fleet, our technology - together, we sail towards a smarter,
           safer and more sustainable future.
         </h3>
