@@ -12,7 +12,7 @@ const OverlayImage = () => {
     const options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.7, // Adjust this value to change when the section is considered "active"
+      threshold: 0.7,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -51,7 +51,14 @@ const OverlayImage = () => {
     } else {
       const element = document.getElementById(section);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const offset = 100; // Adjust this value as needed
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       }
     }
   };
@@ -75,11 +82,13 @@ const OverlayImage = () => {
         <img
           src={logo}
           alt="Logo"
+          onClick={(e) => handleNavClick(e, "home")}
           style={{
             maxWidth: "20%",
             maxHeight: "20%",
             width: "auto",
             height: "auto",
+            cursor: "pointer",
           }}
         />
         <div style={{ display: "flex", gap: "5rem", fontSize: "30px" }}>
