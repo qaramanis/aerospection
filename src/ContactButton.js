@@ -22,7 +22,7 @@ const ContactButton = () => {
     if (copySuccess) {
       const timer = setTimeout(() => {
         setCopySuccess("");
-      }, 3000);
+      }, 1500);
 
       return () => clearTimeout(timer);
     }
@@ -67,11 +67,11 @@ const ContactButton = () => {
           <div
             style={{
               backgroundColor: "#fff",
-              padding: "40px",
-              borderRadius: "15px",
+              padding: "20px",
+              borderRadius: "60px",
               boxShadow: "0 6px 10px rgba(0, 0, 0, 0.1)",
               maxWidth: "90%",
-              width: "500px",
+              width: "600px",
               maxHeight: "90%",
               overflow: "auto",
               position: "relative",
@@ -83,7 +83,7 @@ const ContactButton = () => {
               style={{
                 marginTop: 0,
                 color: "#41B3A2",
-                fontSize: "36px",
+                fontSize: "50px",
                 marginBottom: "30px",
               }}
             >
@@ -92,7 +92,7 @@ const ContactButton = () => {
             <p
               style={{
                 marginBottom: "20px",
-                fontSize: "24px",
+                fontSize: "35px",
                 lineHeight: "1.5",
               }}
             >
@@ -109,7 +109,7 @@ const ContactButton = () => {
             <p style={{ fontSize: "24px", margin: "20px 0" }}>or</p>
             <p
               style={{
-                fontSize: "24px",
+                fontSize: "35px",
                 marginBottom: "20px",
                 lineHeight: "1.5",
               }}
@@ -144,7 +144,7 @@ const ContactButton = () => {
                 color: "#fff",
                 backgroundColor: "#41B3A2",
                 border: "none",
-                borderRadius: "5px",
+                borderRadius: "20px",
                 cursor: "pointer",
                 transition: "background-color 0.3s ease",
                 display: "inline-block",
