@@ -3,7 +3,7 @@ import ContactButton from "./ContactButton";
 import useResponsiveStyles from "./useResponsiveStyles";
 
 const HomeSection = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
