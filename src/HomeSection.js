@@ -3,22 +3,16 @@ import ContactButton from "./ContactButton";
 import useResponsiveStyles from "./useResponsiveStyles";
 
 const HomeSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const currentRef = sectionRef.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsVisible(entry.isIntersecting);
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px",
-      },
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        setIsVisible(entry.isIntersecting);
+      });
+    });
 
     if (currentRef) {
       observer.observe(currentRef);

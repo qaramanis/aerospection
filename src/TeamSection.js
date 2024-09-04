@@ -2,9 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 
 const TeamSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -17,6 +25,7 @@ const TeamSection = () => {
     }
 
     return () => {
+      window.removeEventListener("resize", checkIfMobile);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
@@ -46,71 +55,82 @@ const TeamSection = () => {
     },
   ];
 
+  const sectionStyle = {
+    minHeight: "100vh",
+    backgroundColor: "#f0f8ff", // Light blue background
+    padding: isMobile ? "2rem 1rem" : "8rem 2rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: isMobile ? "center" : "flex-start",
+    opacity: isVisible ? 1 : 0,
+    transition: "opacity 1s ease-in-out",
+  };
+
+  const contentStyle = {
+    maxWidth: isMobile ? "100%" : "80%",
+    margin: isMobile ? "0" : "0 auto 0 10%",
+    textAlign: isMobile ? "center" : "left",
+  };
+
+  const titleStyle = {
+    fontSize: isMobile ? "2rem" : "3rem",
+    color: "#303642",
+    marginBottom: "1rem",
+  };
+
+  const subtitleStyle = {
+    fontSize: isMobile ? "1rem" : "1.5rem",
+    color: "#303642",
+    marginBottom: "2rem",
+  };
+
+  const teamGridStyle = {
+    display: "grid",
+    gridTemplateColumns: isMobile
+      ? "1fr"
+      : "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "2rem",
+  };
+
+  const teamMemberStyle = {
+    backgroundColor: "white",
+    padding: "1.5rem",
+    borderRadius: "10px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  };
+
+  const memberNameStyle = {
+    fontSize: isMobile ? "1.25rem" : "1.5rem",
+    color: "#303642",
+    fontWeight: "bold",
+    marginBottom: "0.5rem",
+  };
+
+  const memberRoleStyle = {
+    fontSize: isMobile ? "1rem" : "1.25rem",
+    color: "#41B3A2",
+    marginBottom: "1rem",
+  };
+
+  const memberBioStyle = {
+    fontSize: isMobile ? "0.9rem" : "1rem",
+    color: "#303642",
+  };
+
   return (
-    <section
-      id="team"
-      ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} flex flex-col min-h-screen bg-blue-100 p-8`}
-      style={{
-        alignContent: "center",
-        marginRight: "50%",
-        paddingTop: "15rem",
-        paddingBottom: "0rem",
-      }}
-    >
-      <div
-        className="max-w-4xl mx-auto"
-        style={{
-          textAlign: "start",
-          padding: "10%",
-        }}
-      >
-        <h2
-          style={{ fontSize: "48px", color: "#303642", marginBottom: "2rem" }}
-        >
-          Our Team
-        </h2>
-        <p style={{ fontSize: "24px", color: "#303642", marginBottom: "3rem" }}>
+    <section id="team" ref={sectionRef} style={sectionStyle}>
+      <div style={contentStyle}>
+        <h2 style={titleStyle}>Our Team</h2>
+        <p style={subtitleStyle}>
           Meet the experts behind Aerospection's revolutionary maritime
           technology.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+        <div style={teamGridStyle}>
           {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md"
-              style={{ paddingTop: "20px" }}
-            >
-              <div className="mb-2 whitespace-nowrap overflow-hidden text-ellipsis">
-                <span
-                  style={{
-                    fontSize: "30px",
-                    color: "#303642",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {member.name}
-                </span>
-                <span
-                  style={{
-                    fontSize: "35px",
-                    color: "#303642",
-                    margin: "0 0.5rem",
-                  }}
-                >
-                  -
-                </span>
-                <span
-                  style={{
-                    fontSize: "25px",
-                    color: "#303642",
-                    marginRight: "0.5rem",
-                  }}
-                >
-                  {member.role}
-                </span>
-              </div>
-              <p style={{ fontSize: "22px", color: "#303642" }}>{member.bio}</p>
+            <div key={index} style={teamMemberStyle}>
+              <h3 style={memberNameStyle}>{member.name}</h3>
+              <p style={memberRoleStyle}>{member.role}</p>
+              <p style={memberBioStyle}>{member.bio}</p>
             </div>
           ))}
         </div>
