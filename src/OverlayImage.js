@@ -43,6 +43,11 @@ const OverlayImage = () => {
         top: 0,
         behavior: "smooth",
       });
+    } else if (section === "team") {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     } else {
       const element = document.getElementById(section);
       if (element) {
@@ -77,7 +82,7 @@ const OverlayImage = () => {
             height: "auto",
           }}
         />
-        <div style={{ display: "flex", gap: "2rem", fontSize: "30px" }}>
+        <div style={{ display: "flex", gap: "5rem", fontSize: "30px" }}>
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}

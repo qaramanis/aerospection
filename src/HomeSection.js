@@ -28,12 +28,23 @@ const HomeSection = () => {
     <section
       id="home"
       ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} flex flex-col min-h-screen  p-4`}
-      style={{ alignContent: "start", marginRight: "50%" }}
+      className={`fade-section ${isVisible ? "is-visible" : ""} min-h-screen  p-4`}
+      style={{
+        alignContent: "start",
+        marginRight: "50%",
+        display: "flex",
+        flexDirection: "row",
+      }}
     >
       <div
         className="max-w-2xl"
-        style={{ textAlign: "start", padding: "10%", marginTop: "15%" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          textAlign: "start",
+          padding: "10%",
+          marginTop: "15%",
+        }}
       >
         <h1 style={{ fontSize: "65px", color: "#303642" }}>
           The Aerospection Edge
