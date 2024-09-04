@@ -2,9 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 
 const AboutUsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust this breakpoint as needed
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -17,105 +25,92 @@ const AboutUsSection = () => {
     }
 
     return () => {
+      window.removeEventListener("resize", checkIfMobile);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
     };
   }, []);
 
+  const sectionStyle = {
+    minHeight: "100vh",
+    padding: isMobile ? "2rem 1rem" : "8rem 2rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: isMobile ? "center" : "flex-end",
+    opacity: isVisible ? 1 : 0,
+    transition: "opacity 1s ease-in-out",
+  };
+
+  const contentStyle = {
+    maxWidth: isMobile ? "100%" : "80%",
+    margin: isMobile ? "0" : "0 10% 0 auto",
+    textAlign: isMobile ? "center" : "right",
+  };
+
+  const titleStyle = {
+    fontSize: isMobile ? "2rem" : "3rem",
+    color: "#303642",
+    marginBottom: "1rem",
+  };
+
+  const subtitleStyle = {
+    fontSize: isMobile ? "1rem" : "1.5rem",
+    color: "#303642",
+    marginBottom: "2rem",
+  };
+
+  const featuresStyle = {
+    display: "grid",
+    gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+    gap: "2rem",
+  };
+
+  const featureStyle = {
+    backgroundColor: "white",
+    padding: "1.5rem",
+    borderRadius: "10px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  };
+
+  const featureTitleStyle = {
+    fontSize: isMobile ? "1.25rem" : "1.5rem",
+    color: "#303642",
+    fontWeight: "bold",
+    marginBottom: "0.5rem",
+  };
+
+  const featureDescriptionStyle = {
+    fontSize: isMobile ? "0.9rem" : "1rem",
+    color: "#303642",
+  };
+
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className={`fade-section ${isVisible ? "is-visible" : ""} flex flex-col min-h-screen p-8`}
-      style={{
-        alignContent: "start",
-        marginLeft: "50%",
-        marginTop: "10rem",
-      }}
-    >
-      <div
-        className="max-w-4xl "
-        style={{ textAlign: "end", MozPaddingEnd: "10%" }}
-      >
-        <h2 style={{ fontSize: "48px", color: "#303642" }}>
-          About Aerospection
-        </h2>
-        <p style={{ fontSize: "24px", color: "#303642" }}>
+    <section id="about" ref={sectionRef} style={sectionStyle}>
+      <div style={contentStyle}>
+        <h2 style={titleStyle}>About Aerospection</h2>
+        <p style={subtitleStyle}>
           Aerospection is a cutting-edge company that seamlessly integrates
-        </p>
-        <p style={{ fontSize: "24px", color: "#303642" }}>
           advanced technology with the critical needs of maritime inspections
           and services
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md text-right">
-            {" "}
-            {/* Added text-right class */}
-            <h3
-              style={{
-                fontSize: "40px",
-                color: "#303642",
-                marginBottom: "1rem",
-              }}
-            >
-              Innovation
-            </h3>
-            <p
-              style={{
-                fontSize: "24px",
-                color: "#303642",
-                marginBottom: "2rem",
-              }}
-            >
+        <div style={featuresStyle}>
+          <div style={featureStyle}>
+            <h3 style={featureTitleStyle}>Innovation</h3>
+            <p style={featureDescriptionStyle}>
               Our innovative approach leverages the latest in drone technology,
-              AI-driven analytics
-            </p>
-            <p
-              style={{
-                fontSize: "24px",
-                color: "#303642",
-                marginBottom: "2rem",
-              }}
-            >
-              and remote inspection solutions to revolutionize assets
-            </p>
-            <p
-              style={{
-                fontSize: "24px",
-                color: "#303642",
-                marginBottom: "2rem",
-              }}
-            >
-              the way maritime are monitored and managed
+              AI-driven analytics and remote inspection solutions to
+              revolutionize the way maritime assets are monitored and managed
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md text-right">
-            {" "}
-            <h3
-              style={{
-                fontSize: "40px",
-                color: "#303642",
-                marginBottom: "1rem",
-              }}
-            >
-              Efficiency
-            </h3>
-            <p style={{ fontSize: "24px", color: "#303642" }}>
-              We are not just a service provider; we are your partner
-            </p>
-            <p style={{ fontSize: "24px", color: "#303642" }}>
-              in navigating the future of maritime operations.
-            </p>
-            <p style={{ fontSize: "24px", color: "#303642" }}>
-              Aerospection brings together the best of technology
-            </p>
-            <p style={{ fontSize: "24px", color: "#303642" }}>
-              and industry expertise to deliver unmatched efficiency,
-            </p>
-            <p style={{ fontSize: "24px", color: "#303642" }}>
-              safety, and cost savings, all while ensuring your fleet stays at
-              the forefront of innovation
+          <div style={featureStyle}>
+            <h3 style={featureTitleStyle}>Efficiency</h3>
+            <p style={featureDescriptionStyle}>
+              We are not just a service provider; we are your partner in
+              navigating the future of maritime operations. Aerospection brings
+              together the best of technology and industry expertise to deliver
+              unmatched efficiency, safety, and cost savings, all while ensuring
+              your fleet stays at the forefront of innovation
             </p>
           </div>
         </div>
