@@ -94,9 +94,8 @@ const AboutUsSection = () => {
   };
 
   const imageStyle = {
-    maxWidth: "80%",
+    maxWidth: "100%",
     height: "auto",
-    border: "4px solid white",
     borderRadius: "8px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
     transition: "transform 0.3s ease-in-out",
