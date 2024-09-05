@@ -72,7 +72,7 @@ const HomeSection = () => {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    marginTop: "2rem",
+    marginTop: "4rem",
   };
 
   const imageStyle = {
