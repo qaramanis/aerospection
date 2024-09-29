@@ -4,6 +4,7 @@ const AboutUsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
+  const poster = "/images/drone.png";
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -85,6 +86,21 @@ const AboutUsSection = () => {
     color: "white",
   };
 
+  const imageContainerStyle = {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "8rem",
+  };
+
+  const imageStyle = {
+    maxWidth: "100%",
+    height: "auto",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    transition: "transform 0.3s ease-in-out",
+  };
+
   return (
     <section id="about" ref={sectionRef} style={sectionStyle}>
       <div style={contentStyle}>
@@ -113,6 +129,13 @@ const AboutUsSection = () => {
               your fleet stays at the forefront of innovation
             </p>
           </div>
+        </div>
+        <div style={imageContainerStyle}>
+          <img
+            src={poster}
+            alt="Aerospection Maritime Operations"
+            style={imageStyle}
+          />
         </div>
       </div>
     </section>

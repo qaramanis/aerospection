@@ -40,7 +40,7 @@ const HomeSection = () => {
     display: "flex",
     justifyContent: "flex-start",
     flexDirection: "column",
-    alignItems: isMobile ? "flex-start" : "flex-start",
+    alignItems: "flex-start",
     opacity: isVisible ? 1 : 0,
     transition: "opacity 1s ease-in-out",
   };
@@ -48,7 +48,7 @@ const HomeSection = () => {
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
     margin: isMobile ? "3rem 0 0 0" : "0 auto 0 10%",
-    textAlign: isMobile ? "left" : "left",
+    textAlign: "left",
     alignSelf: "start",
   };
 
@@ -72,7 +72,7 @@ const HomeSection = () => {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    marginTop: "2rem",
+    marginTop: "4rem",
   };
 
   const imageStyle = {
