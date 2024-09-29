@@ -34,9 +34,9 @@ const AboutUsSection = () => {
   }, []);
 
   const sectionStyle = {
-    minHeight: "100vh",
+    minHeight: "75vh",
     padding: isMobile ? "2rem 1rem" : "8rem 2rem 8rem 0",
-    margin: isMobile ? "0" : "3rem",
+    margin: isMobile ? "0" : "5rem",
     display: "flex",
     flexDirection: "column",
     alignItems: isMobile ? "center" : "center",
