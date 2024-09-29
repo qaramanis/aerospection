@@ -35,7 +35,7 @@ const AboutUsSection = () => {
 
   const sectionStyle = {
     minHeight: "100vh",
-    padding: isMobile ? "2rem 1rem" : "8rem 2rem",
+    padding: isMobile ? "2rem 1rem" : "8rem 2rem 8rem 0",
     margin: isMobile ? "0" : "3rem",
     display: "flex",
     flexDirection: "column",
