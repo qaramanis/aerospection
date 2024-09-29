@@ -56,7 +56,7 @@ const TeamSection = () => {
   ];
 
   const sectionStyle = {
-    minHeight: "100vh",
+    minHeight: "65vh",
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
     display: "flex",
     flexDirection: "column",
