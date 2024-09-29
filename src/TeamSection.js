@@ -58,6 +58,7 @@ const TeamSection = () => {
   const sectionStyle = {
     minHeight: "65vh",
     padding: isMobile ? "2rem 1rem" : "8rem 2rem",
+    margin: isMobile ? "0 0" : "3rem 0",
     display: "flex",
     flexDirection: "column",
     alignItems: isMobile ? "center" : "flex-start",
@@ -67,7 +68,7 @@ const TeamSection = () => {
 
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
-    margin: isMobile ? "0" : "5rem auto 5rem 10%",
+    margin: isMobile ? "0" : "3rem auto 3rem 10%",
     textAlign: isMobile ? "center" : "left",
   };
 
