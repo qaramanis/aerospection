@@ -90,7 +90,7 @@ const AboutUsSection = () => {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    margin: "8rem",
+    marginTop: "8rem",
   };
 
   const imageStyle = {
