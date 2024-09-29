@@ -67,7 +67,7 @@ const TeamSection = () => {
 
   const contentStyle = {
     maxWidth: isMobile ? "100%" : "80%",
-    margin: isMobile ? "0" : "0 auto 0 10%",
+    margin: isMobile ? "0" : "5rem auto 5rem 10%",
     textAlign: isMobile ? "center" : "left",
   };
 
